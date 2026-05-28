@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vektor Engenharia — Proposta Comercial | Traevo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --navy:    #1B3A6B;
+    --blue:    #1565C0;
+    --green:   #2E7D32;
+    --gold:    #B8860B;
+    --orange:  #E65100;
+    --light:   #E8F0FB;
+    --lightG:  #E8F5E9;
+    --bg:      #F8FAFF;
+    --white:   #ffffff;
+    --gray:    #F0F2F5;
+    --text:    #1A1A2E;
+    --muted:   #666680;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0D1B3E 0%, #1B3A6B 45%, #1565C0 100%);
+    color: white;
+    padding: 80px 60px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 30%;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #A8C8F0;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .hero h1 span { color: #64B5F6; }
+  .hero p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.75);
+    max-width: 560px;
+    margin-bottom: 36px;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 40px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 28px;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item { }
+  .hero-meta-item .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 4px;
+  }
+  .hero-meta-item .value {
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+  }
+
+  /* ── WRAPPER ── */
+  .wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ── SECTION ── */
+  .section { padding: 64px 40px; }
+  .section-alt { background: white; }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .section-heading {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 640px;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  /* ── PIPELINE ── */
+  .pipeline-block {
+    margin-bottom: 56px;
+  }
+  .pipeline-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding: 20px 28px;
+    border-radius: 14px;
+    color: white;
+  }
+  .pipeline-header.comercial  { background: linear-gradient(135deg, #1B3A6B, #1565C0); }
+  .pipeline-header.gestao     { background: linear-gradient(135deg, #1B5E20, #2E7D32); }
+  .pipeline-header.financeiro { background: linear-gradient(135deg, #4A148C, #7B1FA2); }
+
+  .pipeline-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .pipeline-header-text { flex: 1; }
+  .pipeline-header-text h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .pipeline-header-text p {
+    font-size: 13px;
+    opacity: 0.8;
+  }
+  .pipeline-count {
+    background: rgba(255,255,255,0.2);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* ── STAGES ROW ── */
+  .stages-row {
+    display: flex;
+    gap: 0;
+    position: relative;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .stage-item {
+    flex: 1;
+    min-width: 140px;
+    position: relative;
+  }
+  .stage-item:not(:last-child)::after {
+    content: '›';
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    color: #BBBBCC;
+    z-index: 2;
+    font-weight: 300;
+  }
+  .stage-box {
+    margin: 0 8px;
+    border-radius: 10px;
+    padding: 14px 12px;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+    cursor: default;
+  }
+  .stage-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+  .stage-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    opacity: 0.65;
+  }
+  .stage-label {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  /* Comercial colors */
+  .comercial .stage-box { background: var(--light); border-color: #AABBDD; color: var(--navy); }
+  .comercial .stage-box:hover { border-color: var(--navy); background: var(--navy); color: white; }
+
+  /* Gestão colors */
+  .gestao .stage-box { background: var(--lightG); border-color: #AADDBB; color: var(--green); }
+  .gestao .stage-box:hover { border-color: var(--green); background: var(--green); color: white; }
+
+  /* Financeiro colors */
+  .financeiro .stage-box { background: #F3E5F5; border-color: #CE93D8; color: #6A1B9A; }
+  .financeiro .stage-box:hover { border-color: #7B1FA2; background: #7B1FA2; color: white; }
+
+  /* ── BENEFITS ── */
+  .benefits-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .benefit-tag {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: white;
+    border-radius: 10px;
+    padding: 14px 16px;
+    border: 1px solid #E8EAF0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .benefit-tag .icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .benefit-tag .text {
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* ── INVESTMENT ── */
+  .invest-section {
+    background: linear-gradient(135deg, #0D1B3E 0%, #1B3A6B 100%);
+    color: white;
+    padding: 72px 40px;
+  }
+  .invest-section .section-heading { color: white; }
+  .invest-section .section-sub { color: rgba(255,255,255,0.65); }
+
+  .invest-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  .invest-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .invest-card .ic-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 12px;
+  }
+  .invest-card .ic-value {
+    font-size: 28px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+  .invest-card .ic-cond {
+    font-size: 13px;
+    color: #64B5F6;
+    font-weight: 500;
+  }
+  .invest-card.highlight {
+    background: rgba(255,255,255,0.13);
+    border-color: rgba(100,181,246,0.4);
+  }
+
+  .invest-total {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .invest-total .it-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 500;
+  }
+  .invest-total .it-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 4px;
+  }
+  .invest-total .it-val {
+    font-size: 22px;
+    font-weight: 800;
+    color: white;
+  }
+
+  /* ── BONUS BANNER ── */
+  .bonus-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .bonus-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 22px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bonus-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .bonus-card.b1::before { background: #64B5F6; }
+  .bonus-card.b2::before { background: #A5D6A7; }
+  .bonus-card.b3::before { background: #FFD54F; }
+
+  .bonus-card .b-icon { font-size: 28px; margin-bottom: 12px; }
+  .bonus-card .b-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 6px;
+  }
+  .bonus-card .b-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+  }
+  .bonus-card .b-badge {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .b1 .b-badge { background: #1565C0; color: #90CAF9; }
+  .b2 .b-badge { background: #1B5E20; color: #A5D6A7; }
+  .b3 .b-badge { background: #4A148C; color: #CE93D8; }
+
+  /* ── PROPOSAL IRRESISTIBLE ── */
+  .proposal-section {
+    background: white;
+    padding: 72px 40px;
+  }
+
+  .proposal-card {
+    background: linear-gradient(135deg, #FFFDE7 0%, #FFF8E1 100%);
+    border: 2px solid #FFD54F;
+    border-radius: 20px;
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .proposal-card::before {
+    content: '★';
+    position: absolute;
+    top: -20px; right: 40px;
+    font-size: 120px;
+    color: rgba(255,213,79,0.15);
+    line-height: 1;
+  }
+
+  .proposal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+
+  .proposal-card h2 {
+    font-size: 34px;
+    font-weight: 800;
+    color: #3E2000;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .proposal-card p.intro {
+    font-size: 16px;
+    color: #5D4037;
+    margin-bottom: 36px;
+    line-height: 1.7;
+    max-width: 680px;
+  }
+
+  .conditions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .condition-item {
+    background: white;
+    border-radius: 14px;
+    padding: 22px 20px;
+    border: 1.5px solid #FFD54F;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(184,134,11,0.1);
+  }
+  .condition-item .ci-icon { font-size: 32px; margin-bottom: 12px; }
+  .condition-item .ci-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .condition-item .ci-val {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--gold);
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+  .condition-item .ci-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .guarantee-box {
+    background: var(--lightG);
+    border: 1px solid #A5D6A7;
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .guarantee-box .g-icon { font-size: 28px; flex-shrink: 0; }
+  .guarantee-box .g-text { }
+  .guarantee-box .g-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .guarantee-box .g-desc {
+    font-size: 13px;
+    color: #3E6E41;
+    line-height: 1.5;
+  }
+
+  .cta-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .cta-btn {
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    color: white;
+    padding: 16px 36px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 24px rgba(27,58,107,0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(27,58,107,0.4);
+  }
+  .cta-note {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .cta-note strong { color: var(--text); }
+
+  /* ── WHAT YOU GET ── */
+  .gains-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .gain-card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px 24px;
+    border: 1px solid #E8EAF0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+  }
+  .gain-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+  .gain-card.gc1::before { background: linear-gradient(90deg, #1B3A6B, #1565C0); }
+  .gain-card.gc2::before { background: linear-gradient(90deg, #1B5E20, #2E7D32); }
+  .gain-card.gc3::before { background: linear-gradient(90deg, #4A148C, #7B1FA2); }
+
+  .gain-card .gc-icon { font-size: 36px; margin-bottom: 16px; }
+  .gain-card .gc-funnel {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0.6;
+  }
+  .gain-card.gc1 .gc-funnel { color: var(--navy); }
+  .gain-card.gc2 .gc-funnel { color: var(--green); }
+  .gain-card.gc3 .gc-funnel { color: #7B1FA2; }
+
+  .gain-card .gc-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .gain-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .gain-card ul li {
+    font-size: 13px;
+    color: #444;
+    padding: 7px 0;
+    border-bottom: 1px solid #F0F2F5;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+  }
+  .gain-card ul li:last-child { border-bottom: none; }
+  .gain-card ul li::before {
+    content: '✓';
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .gc1 ul li::before { background: var(--light); color: var(--navy); }
+  .gc2 ul li::before { background: var(--lightG); color: var(--green); }
+  .gc3 ul li::before { background: #F3E5F5; color: #7B1FA2; }
+
+  /* ── FOOTER ── */
+  .footer-bar {
+    background: #0D1B3E;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+  }
+  .footer-bar strong { color: rgba(255,255,255,0.7); }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; }
+    .hero, .invest-section { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .stages-row { overflow: visible; }
+    .cta-btn { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="wrapper">
+    <div class="hero-badge">Traevo Consultoria · Proposta Comercial</div>
+    <h1>Transformação Digital<br><span>Vektor Engenharia</span></h1>
+    <p>3 pipelines integrados no Bitrix24 para profissionalizar vendas, execução de obras e controle financeiro — do lead ao projeto entregue.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="label">Cliente</div>
+        <div class="value">Irismar Queiroz · Vektor Engenharia</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Solução</div>
+        <div class="value">Bitrix24 Professional</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Data</div>
+        <div class="value">Maio de 2026</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ OS 3 PIPELINES ══ -->
+<div class="section section-alt">
+  <div class="wrapper">
+    <div class="section-title">Estrutura Proposta</div>
+    <div class="section-heading">3 Pipelines que trabalham juntos</div>
+    <div class="section-sub">Cada pipeline cobre uma área crítica do negócio. Juntos, eles criam um fluxo contínuo — desde o primeiro contato até o projeto entregue e pago.</div>
+
+    <!-- FUNIL 1 — COMERCIAL -->
+    <div class="pipeline-block">
+      <div class="pipeline-header comercial">
+        <div class="pipeline-icon">💼</div>
+        <div class="pipeline-header-text">
+          <h3>Pipeline 1 — Comercial</h3>
+          <p>Do lead à assinatura do contrato — nenhuma oportunidade perdida</p>
+        </div>
+        <div class="pipeline-count">5 etapas</div>
+      </div>
+      <div class="stages-row comercial">
+        <div class="stage-item">
+          <div class="stage-box">
+            <div class="stage-num">ETAPA 01</div>
+            <div class="stage-label">Prospecção<br>Novo Lead</div>
+          </div>
+        </div>
+        <div class="stage-item">
+          <div class="stage-box">
+            <div class="stage-num">ETAPA 02</div>
+            <div class="stage-label">Qualificação<br>Reunião Técnica</div>
+          </div>
+        </div>
+        <div class="stage-item">
+          <div class="stage-box">
+            <div class="stage-num">ETAPA 03</div>
+            <div class="stage-label">Proposta Técnica<br>e Comercial</div>
+          </div>
+        </div>
+        <div class="stage-item">
+          <div class="stage-box">
+            <div class="stage-num">ETAPA 04</div>
+            <div class="stage-label">Negociação<br>Follow-up</div>
+          </div>
+        </div>
+        <div class="stage-item">
+          <div class="stage-box">
+            <div class="stage-num">ETAPA 05</div>
+            <div class="stage-label">Contrato Assinado<br>Projeto Ativado</div>
+          </div>
+        </div>
+      </div>
+      <div class="benefits-row">
+        <div class="benefit-tag"><div class="icon">📲</div><div class="text">Captura de leads via WhatsApp diretamente no CRM</div></div>
+        <div class="benefit-tag"><div class="icon">⏰</div><div class="text">Alertas automáticos de follow-up e vencimento de proposta</div></div>
+        <div class="benefit-tag"><div class="icon">📊</div><div class="text">Taxa de conversão por etapa visível em tempo real</div></div>
+        <div class="benefit-tag"><div class="icon">🔁</div><div class="text">Card migra automaticamente para gestão ao assinar contrato</div></div>
+        <div class="benefit-tag"><div class="icon">📁</div><div class="text">Histórico de propostas e negociações sempre acessível</div></div>
+        <div class="benefit-tag"><div class="icon">🤝</div><div class="text">Padronização do processo comercial sem depender de memória</div></div>
+      </div>
+    </div>
+
+    <!-- FUNIL 2 — GESTÃO DE PROJETOS -->
+    <div class="pipeline-block">
+      <div class="pipeline-header gestao">
+        <div class="pipeline-icon">🏗️</div>
+        <div class="pipeline-header-text">
+          <h3>Pipeline 2 — Gestão de Projetos</h3>
+          <p>Da habilitação à ligação — cada etapa da obra rastreada e documentada</p>
+        </div>
+        <div class="pipeline-count">5 etapas</div>
+      </div>
+      <div class="stages-row gestao">
+        <div class="stage-item">
+          <div class="stage-box">
+            <div class="stage-num">ETAPA 01</div>
+            <div class="stage-label">Projeto Ativado<br>Habilitação Inicial</div>
+          </div>
+        </div>
+        <div class="stage-item">
+          <div class="stage-box">
+            <div class="stage-num">ETAPA 02</div>
+            <div class="stage-label">Em Vistoria<br>Aprovação de Projeto</div>
+          </div>
+        </div>
+        <div class="stage-item">
+          <div class="stage-box">
+            <div class="stage-num">ETAPA 03</div>
+            <div class="stage-label">Em Execução<br>Infraestrutura</div>
+          </div>
+        </div>
+        <div class="stage-item">
+          <div class="stage-box">
+            <div class="stage-num">ETAPA 04</div>
+            <div class="stage-label">Aguard. Vistoria<br>Aprovação Final</div>
+          </div>
+        </div>
+        <div class="stage-item">
+          <div class="stage-box">
+            <div class="stage-num">ETAPA 05</div>
+            <div class="stage-label">Projeto Ligado<br>Entregue</div>
+          </div>
+        </div>
+      </div>
+      <div class="benefits-row">
+        <div class="benefit-tag"><div class="icon">📋</div><div class="text">Todas as 26+ subtarefas técnicas organizadas por projeto</div></div>
+        <div class="benefit-tag"><div class="icon">🚨</div><div class="text">Alertas automáticos de prazos normativos da concessionária</div></div>
+        <div class="benefit-tag"><div class="icon">📸</div><div class="text">Relatório fotográfico e memorial descritivo centralizados</div></div>
+        <div class="benefit-tag"><div class="icon">💸</div><div class="text">Medições quinzenais integradas ao pipeline financeiro</div></div>
+        <div class="benefit-tag"><div class="icon">📐</div><div class="text">Código padronizado por projeto (VEK-CLIENTE-LOCAL-ANO)</div></div>
+        <div class="benefit-tag"><div class="icon">🔍</div><div class="text">Rastreabilidade completa de ocorrências e travamentos</div></div>
+      </div>
+    </div>
+
+    <!-- FUNIL 3 — FINANCEIRO -->
+    <div class="pipeline-block">
+      <div class="pipeline-header financeiro">
+        <div class="pipeline-icon">💰</div>
+        <div class="pipeline-header-text">
+          <h3>Pipeline 3 — Financeiro</h3>
+          <p>Controle de medições, faturamento e fluxo de caixa por projeto</p>
+        </div>
+        <div class="pipeline-count">5 etapas</div>
+      </div>
+      <div class="stages-row financeiro">
+        <div class="stage-item">
+          <div class="stage-box">
+            <div class="stage-num">ETAPA 01</div>
+            <div class="stage-label">Contrato Ativo<br>Setup Financeiro</div>
+          </div>
+        </div>
+        <div class="stage-item">
+          <div class="stage-box">
+            <div class="stage-num">ETAPA 02</div>
+            <div class="stage-label">Medições em<br>Andamento</div>
+          </div>
+        </div>
+        <div class="stage-item">
+          <div class="stage-box">
+            <div class="stage-num">ETAPA 03</div>
+            <div class="stage-label">Nota Fiscal<br>Emitida</div>
+          </div>
+        </div>
+        <div class="stage-item">
+          <div class="stage-box">
+            <div class="stage-num">ETAPA 04</div>
+            <div class="stage-label">Aguardando<br>Pagamento</div>
+          </div>
+        </div>
+        <div class="stage-item">
+          <div class="stage-box">
+            <div class="stage-num">ETAPA 05</div>
+            <div class="stage-label">Projeto Quitado<br>Encerrado</div>
+          </div>
+        </div>
+      </div>
+      <div class="benefits-row">
+        <div class="benefit-tag"><div class="icon">📅</div><div class="text">Criação automática de card financeiro ao assinar contrato</div></div>
+        <div class="benefit-tag"><div class="icon">🧾</div><div class="text">Controle de NF, boletos, reserva técnica (5%) e DP/Ramal</div></div>
+        <div class="benefit-tag"><div class="icon">⚠️</div><div class="text">Alerta de inadimplência antes de liberar próxima etapa</div></div>
+        <div class="benefit-tag"><div class="icon">📈</div><div class="text">Dashboard gerencial de faturamento por projeto em tempo real</div></div>
+        <div class="benefit-tag"><div class="icon">🏦</div><div class="text">Parcelamentos de DP e Ramal controlados no fluxo de caixa</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ O QUE VOCÊ GANHA ══ -->
+<div class="section" style="background: var(--bg);">
+  <div class="wrapper">
+    <div class="section-title">Resultado para a Vektor</div>
+    <div class="section-heading">O que você ganha com cada pipeline</div>
+    <div class="section-sub">Cada funil resolve um problema real que hoje depende de memória, planilha ou WhatsApp informal.</div>
+    <div class="gains-grid">
+      <div class="gain-card gc1">
+        <div class="gc-icon">💼</div>
+        <div class="gc-funnel">Pipeline Comercial</div>
+        <div class="gc-title">Nunca mais perder uma oportunidade</div>
+        <ul>
+          <li>Pipeline visual de todas as propostas ativas</li>
+          <li>Follow-up automático para não esquecer clientes</li>
+          <li>Saída do processo: contrato gerado sem retrabalho</li>
+          <li>Análise de origem dos leads (indicação, ativo, evento)</li>
+          <li>Histórico completo de negociações por cliente</li>
+          <li>Gestão de proposta com versões e validade controlada</li>
+        </ul>
+      </div>
+      <div class="gain-card gc2">
+        <div class="gc-icon">🏗️</div>
+        <div class="gc-funnel">Pipeline de Gestão</div>
+        <div class="gc-title">Projetos entregues no prazo e documentados</div>
+        <ul>
+          <li>Danilo com visão de todos os projetos em andamento</li>
+          <li>Nenhum prazo normativo perdido — alertas automáticos</li>
+          <li>ARTs, protocolos e relatórios no lugar certo, sempre</li>
+          <li>Medições quinzenais disparadas automaticamente</li>
+          <li>Irismar acompanha sem precisar perguntar ao Danilo</li>
+          <li>Relatório de travamentos para justificar atrasos da concessionária</li>
+        </ul>
+      </div>
+      <div class="gain-card gc3">
+        <div class="gc-icon">💰</div>
+        <div class="gc-funnel">Pipeline Financeiro</div>
+        <div class="gc-title">Caixa sob controle, faturamento em dia</div>
+        <ul>
+          <li>Bruna sabe exatamente o que faturar e quando</li>
+          <li>Controle centralizado de NF, DP, Ramal e reserva técnica</li>
+          <li>Controle de inadimplência antes de avançar na obra</li>
+          <li>Reserva técnica de 5% registrada por contrato</li>
+          <li>Visão do fluxo de caixa por projeto e geral</li>
+          <li>Parcelamento de DP e Ramal rastreado sem planilha</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ INVESTIMENTO ══ -->
+<div class="invest-section">
+  <div class="wrapper">
+    <div class="section-title" style="color:rgba(255,255,255,0.45);">Investimento</div>
+    <div class="section-heading">Transparência total no valor</div>
+    <div class="section-sub">Sem surpresas. Você sabe exatamente o que paga e quando — antes de assinar qualquer coisa.</div>
+
+    <!-- Tabela detalhada da licença -->
+    <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:16px;overflow:hidden;margin-bottom:20px;">
+      <table style="width:100%;border-collapse:collapse;font-size:14px;">
+        <thead>
+          <tr style="background:rgba(255,255,255,0.1);">
+            <th style="padding:14px 20px;text-align:left;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:1px;font-size:11px;text-transform:uppercase;">Item</th>
+            <th style="padding:14px 20px;text-align:left;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:1px;font-size:11px;text-transform:uppercase;">Condição de Pagamento</th>
+            <th style="padding:14px 20px;text-align:right;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:1px;font-size:11px;text-transform:uppercase;">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-top:1px solid rgba(255,255,255,0.08);">
+            <td style="padding:14px 20px;color:rgba(255,255,255,0.85);">Bitrix24 Professional (3 usuários) — 1 ano</td>
+            <td style="padding:14px 20px;color:rgba(255,255,255,0.55);font-size:13px;">Preço cheio</td>
+            <td style="padding:14px 20px;text-align:right;color:rgba(255,255,255,0.45);text-decoration:line-through;font-size:13px;">R$ 16.788,00</td>
+          </tr>
+          <tr style="border-top:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);">
+            <td style="padding:14px 20px;color:#A5D6A7;">Desconto promocional (30%)</td>
+            <td style="padding:14px 20px;color:rgba(255,255,255,0.55);font-size:13px;">—</td>
+            <td style="padding:14px 20px;text-align:right;color:#A5D6A7;font-weight:600;">− R$ 4.868,00</td>
+          </tr>
+          <tr style="border-top:1px solid rgba(255,255,255,0.08);">
+            <td style="padding:14px 20px;color:white;font-weight:700;">Bitrix24 Professional — valor com desconto</td>
+            <td style="padding:14px 20px;color:#90CAF9;font-size:13px;">À vista ou em até 10x no cartão</td>
+            <td style="padding:14px 20px;text-align:right;color:white;font-weight:800;font-size:17px;">R$ 11.920,00</td>
+          </tr>
+          <tr style="border-top:2px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);">
+            <td style="padding:14px 20px;color:white;font-weight:700;">Consultoria de Implementação</td>
+            <td style="padding:14px 20px;color:#90CAF9;font-size:13px;">50% agora · 50% ao finalizar</td>
+            <td style="padding:14px 20px;text-align:right;color:white;font-weight:800;font-size:17px;">R$ 13.625,00</td>
+          </tr>
+          <tr style="border-top:2px solid rgba(100,181,246,0.4);background:rgba(100,181,246,0.08);">
+            <td style="padding:16px 20px;color:white;font-weight:800;font-size:15px;">Integração WhatsApp Business</td>
+            <td style="padding:16px 20px;color:#FFD54F;font-size:13px;font-weight:600;">1º mês grátis</td>
+            <td style="padding:16px 20px;text-align:right;color:#FFD54F;font-weight:700;">R$ 0,00 no 1º mês</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- BONUS ROW -->
+    <div class="bonus-row">
+      <div class="bonus-card b1">
+        <div class="b-icon">💳</div>
+        <div class="b-title">Licença em até 10x no cartão</div>
+        <div class="b-desc">A licença do Bitrix24 com 30% de desconto, parcelada em até 10x no cartão de crédito. Você começa a usar imediatamente enquanto distribui o custo.</div>
+        <div class="b-badge">30% de desconto</div>
+      </div>
+      <div class="bonus-card b2">
+        <div class="b-icon">🤝</div>
+        <div class="b-title">Consultoria com risco zero</div>
+        <div class="b-desc">Você paga 50% para iniciar. Os outros 50% só são devidos quando a implementação estiver 100% concluída e validada por você — nosso compromisso com resultado.</div>
+        <div class="b-badge">Pague pelo resultado</div>
+      </div>
+      <div class="bonus-card b3">
+        <div class="b-icon">📱</div>
+        <div class="b-title">1 mês grátis de WhatsApp</div>
+        <div class="b-desc">A integração do WhatsApp Business com o Bitrix24 inclui 30 dias gratuitos. Sua equipe já começa a operar pelo CRM sem custo adicional de integração.</div>
+        <div class="b-badge">Bônus incluído</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PROPOSTA FINAL ══ -->
+<div class="proposal-section">
+  <div class="wrapper">
+    <div class="section-title">Proposta Comercial</div>
+    <div class="section-heading">Condições pensadas para a Vektor</div>
+    <div class="section-sub">Eliminamos as barreiras de entrada. Você só paga pela entrega, não pela promessa.</div>
+
+    <div class="proposal-card">
+      <div class="proposal-badge">⭐ Proposta Exclusiva · Vektor Engenharia</div>
+      <h2>Transforme a Vektor agora<br>sem risco financeiro</h2>
+      <p class="intro">
+        Desenhamos essa proposta pensando na realidade de uma engenharia em crescimento: você precisa de certeza antes de investir. Por isso, as condições abaixo são nossas — não da plataforma. São a nossa forma de mostrar que acreditamos 100% no resultado.
+      </p>
+
+      <div class="conditions-grid">
+        <div class="condition-item">
+          <div class="ci-icon">💳</div>
+          <div class="ci-title">Licença do Sistema</div>
+          <div class="ci-val">10x no cartão</div>
+          <div class="ci-desc">De R$ 16.788 por R$ 11.920 — 30% de desconto, parcelado em até 10x no cartão. Use desde o primeiro dia.</div>
+        </div>
+        <div class="condition-item">
+          <div class="ci-icon">🛡️</div>
+          <div class="ci-title">Consultoria Traevo</div>
+          <div class="ci-val">R$ 13.625</div>
+          <div class="ci-desc">50% (R$ 6.812,50) para iniciar. Os outros 50% somente quando o projeto estiver 100% entregue e validado por você.</div>
+        </div>
+        <div class="condition-item">
+          <div class="ci-icon">📱</div>
+          <div class="ci-title">Integração WhatsApp</div>
+          <div class="ci-val">1º mês grátis</div>
+          <div class="ci-desc">30 dias de integração do WhatsApp Business sem custo. Sua equipe já começa integrada.</div>
+        </div>
+      </div>
+
+      <div class="guarantee-box">
+        <div class="g-icon">✅</div>
+        <div class="g-text">
+          <div class="g-title">Garantia de Entrega Traevo</div>
+          <div class="g-desc">Os 3 pipelines configurados e validados com a sua equipe (Irismar, Danilo e Bruna), automações ativas e treinamento realizado — ou você não paga a segunda parcela. Simples assim.</div>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <button class="cta-btn" onclick="window.print()">
+          🖨️ Imprimir / Salvar PDF
+        </button>
+        <div class="cta-note">
+          <strong>Próximo passo:</strong> Reunião de alinhamento com Irismar<br>
+          para confirmar escopo e assinar o contrato de implementação.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<div class="footer-bar">
+  <strong>Traevo Consultoria</strong> · Nelly Miranda · nelly.miranda@traevo.com.br · Documento confidencial · Maio de 2026
+</div>
+
+</body>
+</html>
